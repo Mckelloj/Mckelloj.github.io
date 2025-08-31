@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Characters</title>
+    <style>
+        body {
+            background-color: rgb(8, 2, 66);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #f4f4f9;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #e0f7fa;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #003366; /* Links color */
+        }
+
+        th {
+            background-color: #1565c0;
+            color: white;
+            font-size: 18px;
+        }
+
+        td {
+            font-size: 16px;
+        }
+
+        caption {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .canvas-container {
+            text-align: center;
+        }
+
+        canvas {
+            display: block;
+            margin: 20px auto;
+        }
+
+        .character-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .character-item {
+            text-align: center;
+            margin: 15px;
+        }
+
+        .character-item img {
+            width: 200px;
+            height: 300px;
+            border-radius: 8px;
+        }
+
+        .character-item h3 {
+            font-size: 18px;
+            color: #FFD700; /* Gold color for character names */
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Canvas -->
+<div class="canvas-container">
+    <canvas id="myCanvas" width="1275" height="100"></canvas>
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "71px Arial";
+        ctx.fillText("🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟", 10, 70);
+    </script>
+</div>
+
+<!-- Navigation bar -->
+<nav class="navbar">
+    <a href="Places.html">( Tour The World )</a>
+    <a href="Characters.html">( Look At The Characters )</a>
+    <a href="index.html">( Introduction )</a>
+    <a href="CultivationLevels.html">( Cultivation Levels )</a>
+    <a href="Review.html">( Review )</a>
+</nav>
+
+<h1 style="text-align:center; color:#1565c0;">Characters from Swallowed Star</h1>
+
+<!-- Character List -->
+<div class="character-container">
+    <!-- Character 1 -->
+    <div class="character-item">
+        <img src="LuoFeng.png" alt="Character 1">
+        <h3>Luo Feng</h3>
+    </div>
+    
+    <!-- Character 2 -->
+    <div class="character-item">
+        <img src="PrimalChaosLeader.jpg" alt="Character 2">
+        <h3>Primal Chaos City Leader</h3>
+    </div>
+
+    <!-- Character 3 -->
+    <div class="character-item">
+        <img src="AiChen.jpg" alt="Character 3">
+        <h3>Ai Chen</h3>
+    </div>
+
+    <!-- Character 4 -->
+    <div class="character-item">
+        <img src="Brolin.jpg" alt="Character 4">
+        <h3>Brolin</h3>
+    </div>
+
+    <!-- Character 5 -->
+    <div class="character-item">
+        <img src="SittingMountainGuest.jpg" alt="Character 5">
+        <h3>Sitting Mountain Guest</h3>
+    </div>
+
+    <!-- Add more characters as needed -->
+</div>
+
+</body>
+</html>
