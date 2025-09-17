@@ -3,207 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <title>Cultivation Levels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            background-color: rgb(8, 2, 66);
-            font-family: Arial, sans-serif;
+            background: radial-gradient(ellipse at top, #1a237e 0%, #080242 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #e3f2fd;
+            margin: 0;
+            padding: 0;
         }
-
-        table {
+        .canvas-container {
+            position: relative;
             width: 100%;
-            border-collapse: collapse;
-            margin: 20px auto;
-            background-color: #f4f4f9;
+            height: 100px;
+            overflow: hidden;
+            margin-bottom: 10px;
         }
-
-        th, td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #ddd;
+        #starCanvas {
+            display: block;
+            width: 100%;
+            height: 100px;
+            background: transparent;
         }
-
-
         .navbar {
             display: flex;
-            justify-content: space-around;
-            background-color: #e0f7fa;
-            padding: 10px;
+            justify-content: center;
+            align-items: center;
+            background: rgba(224, 247, 250, 0.95);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
             margin-bottom: 20px;
         }
-
-
         .navbar a {
             text-decoration: none;
             font-weight: bold;
-            color: #003366; /* Links color */
+            color: #003366;
+            margin: 0 18px;
+            padding: 8px 18px;
+            border-radius: 22px;
+            transition: background 0.2s, color 0.2s;
+            font-size: 1.1em;
+            position: relative;
         }
-
+        .navbar a:hover, .navbar a.active {
+            background: #ffd700;
+            color: #1a237e;
+            box-shadow: 0 2px 8px rgba(255,215,0,0.15);
+        }
+        h1 {
+            text-align: center;
+            color: #FFD700;
+            font-size: 2.5em;
+            margin-top: 0.7em;
+            margin-bottom: 0.3em;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 12px #000, 0 0 8px #ffd70080;
+        }
+        table {
+            width: 98vw;
+            max-width: 1100px;
+            border-collapse: collapse;
+            margin: 30px auto 40px auto;
+            background-color: rgba(244,244,249,0.95);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        th, td {
+            padding: 14px 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
         th {
             background-color: #1565c0;
             color: white;
-            font-size: 18px;
+            font-size: 1.15em;
         }
-
         td {
-            font-size: 16px;
+            font-size: 1em;
+            color: #1a237e;
+            background: rgba(255,255,255,0.85);
         }
-
         caption {
-            font-size: 24px;
+            font-size: 1.4em;
             font-weight: bold;
             margin-bottom: 10px;
-            color: white;
+            color: #FFD700;
+            background: none;
+        }
+        /* Fade-in animation for table */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            h1 { font-size: 1.6em; }
+            table { font-size: 0.95em; }
+            th, td { padding: 8px 4px; }
+        }
+        @media (max-width: 600px) {
+            .navbar { flex-direction: column; }
+            .navbar a { margin: 5px 0; }
+            .canvas-container { height: 60px; }
+            #starCanvas { height: 60px; }
+            table, th, td { font-size: 0.85em; }
         }
     </style>
 </head>
 <body>
 
-<!-- Canvas (empty in this case, since you don't want snowflakes) -->
-    <canvas id="myCanvas" width="1275" height="100"></canvas>
-    <script>
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-        ctx.font = "71px Arial";
-        ctx.fillText("🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟", 10, 70);
-    </script> 
+<!-- Animated Star Canvas -->
+<div class="canvas-container">
+    <canvas id="starCanvas" width="1600" height="100"></canvas>
+</div>
 
-    <!-- Navigation bar -->
-    <nav class="navbar">
+<!-- Navigation bar -->
+<nav class="navbar">
     <a href="Places.html">( Tour The World )</a>
     <a href="Characters.html">( Look At The Characters )</a>
     <a href="index.html">( Introduction )</a>
-    <a href="CultivationLevels.html">( Cultivation Levels )</a>
+    <a href="CultivationLevels.html" class="active">( Cultivation Levels )</a>
     <a href="Review.html">( Review )</a>
 </nav>
 
-    <h1 style="text-align:center; color:#1565c0;">Cultivation Levels</h1>
+<h1 class="fade-in">Cultivation Levels</h1>
 
-    <table>
-        <caption>Cultivation Level Breakdown</caption>
-        <thead>
-            <tr>
-                <th>Level</th>
-                <th>Name</th>
-                <th>Lifespan</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Apprentice(1-9)</td>
-                <td>100yrs</td>
-                <td>High level practitioners in low level countries of 'aboriginal' planets.<br> In this stage, the practitioner strengthens their body and consciousness to the utmost level with genetic energy.</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Planetary(1-9)</td>
-                <td>1000yrs</td>
-                <td>Cultivators at this stage form a Miniature Planet inside their body.<br> 
-                    This Planet also contains the essence of an Original Law.<br> 
-                    This planet has its own gravitational pull which can counteract<br> 
-                    the weaker gravitational pulls of planets, allowing flight. Practitioners at this level are barely considered<br>
-                    basic cultivators in the universe and can only be thugs, servants or cannon fodder.<br>
-                    With a punch they can destroy a small town, and fly at supersonic speeds<br> 
-                    depending on the strength of the planet's gravity.
-                
-                
-                
-                
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Stellar(1-9)</td>
-                <td>1 Era (10k years)</td>
-                <td>The Planetary System within oneself is transformed into a Star System.<br>
-                    They cannot survive in space for a long time, but can fly short distances.<br>
-                    Basically all the features of a planet level upgraded.<br>
-                    One punch can destroy a large city.<br> In the entire galaxy they are ordinary soldiers,<br>
-                    bodyguards or cannon fodder.</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Universe(1-9)</td>
-                <td>10 Eras (100k years)</td>
-                <td>On average 1 Universe Level is born in each Galaxy.
-A Universe Level 1 is 40 times stronger than an average Stellar Level 9.
-At this level ones spiritual energy (mind), physical energy (body), genetic energy and will naturally reach an incomparably beautiful and harmonious state and the fusion of these forces creates a miniature black hole, that produces energy that can have a controlling effect on the surrounding space.</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Domain Lord(1-9)</td>
-                <td>100 Eras (1 Million years)</td>
-                <td>Once you have reached the Domain Master level you will typically start to step into the threshold of a lower law.
-A fusion of the 9 black holes will commence to form one big black hole. Energy will be absorbed and solidified to create a life core.
-This life core stores the soul of that domain lordThe life core can be in any part of their body. Because the life core of a domain lord needs to be destroyed in order to kill them, domain lords are capable of surviving a destroyed head and domain lord-level slaves are rare.
-(Slaves tend to be controlled via a chip implanted in the brain) A domain lord powerhouse is powerful enough to destroy a small planet with a punch.
-</td>        
-            </tr>
+<table class="fade-in">
+    <caption>Cultivation Level Breakdown</caption>
+    <thead>
+        <tr>
+            <th>Level</th>
+            <th>Name</th>
+            <th>Lifespan</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Apprentice (1-9)</td>
+            <td>100 yrs</td>
+            <td>High-level practitioners in low-level countries of 'aboriginal' planets. In this stage, the practitioner strengthens their body and consciousness to the utmost level with genetic energy.</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Planetary (1-9)</td>
+            <td>1,000 yrs</td>
+            <td>Cultivators at this stage form a Miniature Planet inside their body, containing the essence of an Original Law. They can fly at supersonic speeds and destroy small towns with a punch.</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Stellar (1-9)</td>
+            <td>1 Era (10k yrs)</td>
+            <td>The Planetary System within oneself is transformed into a Star System. They can destroy large cities and serve as ordinary soldiers or bodyguards in the galaxy.</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Universe (1-9)</td>
+            <td>10 Eras (100k yrs)</td>
+            <td>At this level, spiritual, physical, and genetic energies fuse to create a miniature black hole, granting control over surrounding space. One is 40x stronger than a Stellar Level 9.</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Domain Lord (1-9)</td>
+            <td>100 Eras (1 Million yrs)</td>
+            <td>Domain Lords fuse 9 black holes into one, forming a life core that stores their soul. They can survive severe injuries and destroy small planets with a punch.</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>World Lord (1-9)</td>
+            <td>1,000 Eras (10 Million yrs)</td>
+            <td>World Lords gain deep understanding of a lower law and form a miniature world inside their body. They can store lifeforms and destroy star systems.</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Immortal (Normal-King)</td>
+            <td>1 Reincarnation Era (Universe lifespan)</td>
+            <td>Immortals comprehend original laws, form a divine body, and create an immortal kingdom. They can regenerate from a single cell and are nearly indestructible.</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Universe Venerable</td>
+            <td>1 Reincarnation Era (Universe lifespan)</td>
+            <td>Universe Venerables fuse lower and upper laws, becoming 1,000 times stronger than ordinary Immortals. They are divided into Space and Time Venerables.</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Universe Master (Tier 1-6)</td>
+            <td>1 Reincarnation Era (Universe lifespan)</td>
+            <td>Masters perfectly fuse laws and transcend space and time, gaining immense power. They can stop the operation of original laws within a certain space.</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Supreme Universe Master / True God (Tier 7-9)</td>
+            <td>3 Reincarnation Eras</td>
+            <td>True Gods transform their Kingdom of God into a Miniature Universe, becoming independent of the original universe and living longer than the universe itself.</td>
+        </tr>
+    </tbody>
+</table>
 
-            <tr>
-                <td>6</td>
-                <td>World Lord(1-9)</td>
-                <td>1,000 Eras (10 Million years)</td>
-                <td>World Lords try to obtain a deep understanding of a certain lower source of the law,
-                    and even get the recognition of the source of the law. They also began to have a
-                    preliminary understanding of the superior laws (usually the space law). The life
-                    core formed during the domain lord stage transforms into a miniature World.
-                    One sector lord tends to appear for every 1000 galaxies.
-                    Sector lords are capable of storing and carrying lifeforms around in their miniature world.
-                    One punch can easily destoy a small star system. eg:Ouru Solar System
-                    As sector lords are capable of maintaining their youth, they will only perish after 1,000 eras(or 10 million years) when their soul collapses.</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Immortal(Normal-King)</td>
-                <td>1 Reincarnation Era(Lifespan of the Universe)</td>
-                <td>They comprehend a certain low-level original law (gold, wood, water, fire, earth, wind, thunder, and light), 
-                    and gradually comprehend the corresponding upper-level original law (usually the space law). 
-                    Cultivators who through the lower level of the origin laws (generally 90%+ understanding of a law), 
-                    formed a divine body, and managed to imprint a soul imprint on every part of their body. The mini world 
-                    inside the body is released into a part of space preferably a hidden area, to form an immortal kingdom.
-                    In this kingdom is a vast ammount of energy, which can be accessed by the owner at any time. They 
-                    Every Immortal/Immortal King has a known title as a moniker. E.g. Blade River King.
-                    As every cell of an Immortal contains part of their soul, Immortal Kings can be reborn from a single cell.
-                    Attacks from a star railgun that can vaporize galaxies are incapable of harming an Immortal.</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Universe Venerable</td>
-                <td>1 Reincarnation Era(Lifespan of the Universe)</td>
-                <td>There are two ways of becoming a Universe Venerable.
-                    Comprehending any Lower Law and either comprehending the Law of Space
-                    or the Law of Time and all their talents. Imperfectly fusing any Lower 
-                    and Upper Law. For example the Beast Gods follow this path.
-                    Further divided into Space Venerables and Time Venerables.
-                    1000 times stronger than an ordinary Immortal.</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Universe Master(Tier 1-6)</td>
-                <td>1 Reincarnation Era(Lifespan of the Universe)</td>
-                <td>There are two ways of becoming a Universe Master. Comprehending both the Law of Space and
-                    Law of Time and any Lower Law. Perfectly fusing any Lower and Upper Law. For example 
-                    the Beast Gods follow this path. When a Universe Venerable breaks through to become 
-                    the Universe Master then the Original Ocean with a diameter of tens of billions of kilometers 
-                    descends, transforming their Kingdom of God and increasing their divine power by a hundredfold. 
-                    As such they have transcended Space & Time and became a Universe Master. Within a certain space 
-                    around them, they can stop the Original Laws Operation, however as powerful as they are, they 
-                    still cannot detect their Operation. A singular blow from a Universe Master makes a normal 
-                    Universe Venerable lose 10% of their Divine Body.</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td> Supreme Universe Master/ True god (Tier 7-9)</td>
-                <td>3 Riencarnation Eras</td>
-                <td>There are two ways of breaking through to True God When someone breaks through, 
-                    the Original Universe will protect that person and prevent any form of interruption. 
-                    Their Kingdom of God will be transformed into a Miniature Universe, independent of the original universe they were born in 
-                    which is why they can live, longer than the universe.</td>
-            </tr>
-        </tbody>
-    </table>
+<script>
+    // Animated Star Canvas
+    const canvas = document.createElement('canvas');
+    canvas.id = 'starCanvas';
+    canvas.width = 1600;
+    canvas.height = 100;
+    document.querySelector('.canvas-container')?.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    const STAR_COUNT = Math.floor(canvas.width / 18);
 
+    function randomStar() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.7 + 0.7,
+            speed: Math.random() * 0.7 + 0.2,
+            alpha: Math.random() * 0.5 + 0.5
+        };
+    }
+    function createStars() {
+        stars = [];
+        for (let i = 0; i < STAR_COUNT; i++) {
+            stars.push(randomStar());
+        }
+    }
+    function drawStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let star of stars) {
+            ctx.save();
+            ctx.globalAlpha = star.alpha;
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
+            ctx.fillStyle = '#FFD700';
+            ctx.shadowColor = '#FFD700';
+            ctx.shadowBlur = 8;
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+    function animateStars() {
+        for (let star of stars) {
+            star.x += star.speed;
+            if (star.x > canvas.width + 2) {
+                star.x = -2;
+                star.y = Math.random() * canvas.height;
+            }
+        }
+        drawStars();
+        requestAnimationFrame(animateStars);
+    }
+    createStars();
+    drawStars();
+    animateStars();
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth > 600 ? 1600 : window.innerWidth;
+        createStars();
+        drawStars();
+    });
+
+    // Fade-in animation on scroll
+    function revealOnScroll() {
+        const elements = document.querySelectorAll('.fade-in');
+        const windowHeight = window.innerHeight;
+        for (let el of elements) {
+            const top = el.getBoundingClientRect().top;
+            if (top < windowHeight - 80) {
+                el.classList.add('visible');
+            }
+        }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+    // Highlight active nav link
+    document.querySelectorAll('.navbar a').forEach(link => {
+        if (window.location.pathname.endsWith(link.getAttribute('href'))) {
+            link.classList.add('active');
+        }
+    });
+</script>
 </body>
 </html>
