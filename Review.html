@@ -1,111 +1,187 @@
-</body>
-
-</html>
-
 <!DOCTYPE html>
-
-<head>
-
 <html lang="en">
-
-<meta charset="UTF-8">
-
-<title>Review</title>
-
- <style>
-        body {
-            background-color: rgb(8, 2, 66);
-            font-family: Arial, sans-serif;
-            color: #fff; /* Default text color is white */
+<head>
+    <meta charset="UTF-8">
+    <title>Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            scroll-behavior: smooth;
         }
-
+        body {
+            background: radial-gradient(ellipse at top, #1a237e 0%, #080242 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #e3f2fd;
+            margin: 0;
+            padding: 0;
+        }
         .navbar {
             display: flex;
-            justify-content: space-around;
-            background-color: #e0f7fa;
-            padding: 10px;
-            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+            background: rgba(224, 247, 250, 0.95);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
-
         .navbar a {
             text-decoration: none;
             font-weight: bold;
-            color: #003366; /* Links color */
+            color: #003366;
+            margin: 0 18px;
+            padding: 8px 18px;
+            border-radius: 22px;
+            transition: background 0.2s, color 0.2s;
+            font-size: 1.1em;
+            position: relative;
         }
-
-        canvas {
+        .navbar a:hover, .navbar a.active {
+            background: #ffd700;
+            color: #1a237e;
+            box-shadow: 0 2px 8px rgba(255,215,0,0.15);
+        }
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        #starCanvas {
             display: block;
-            margin: 0 auto 20px;
-            border: 1px solid #000000;
+            width: 100%;
+            height: 100px;
+            background: transparent;
         }
-
         h1, h2, h3 {
             text-align: center;
-            color: #FFD700; /* Golden color for headers */
+            color: #FFD700;
+            margin-top: 0.7em;
+            margin-bottom: 0.3em;
+            letter-spacing: 1px;
         }
-
         h1 {
-            font-size: 3em;
-        }
-
-        h2 {
             font-size: 2.5em;
+            text-shadow: 0 2px 12px #000, 0 0 8px #ffd70080;
         }
-
+        h2 {
+            font-size: 2em;
+            text-shadow: 0 1px 6px #000, 0 0 4px #ffd70060;
+        }
         h3 {
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
-
-        p {
-            max-width: 1000px;
-            margin: auto;
-            color: #B0E0E6; /* Lighter color for paragraph text */
+        p, ol {
+            max-width: 900px;
+            margin: 1.2em auto;
+            color: #b0e0e6;
+            font-size: 1.15em;
+            line-height: 1.7;
+            background: rgba(20, 30, 60, 0.45);
+            border-radius: 12px;
+            padding: 1em 1.5em;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
-
         ol {
-            max-width: 800px;
-            margin: auto;
-            color: #B0E0E6; /* Same lighter color for list items */
+            padding-left: 2.5em;
         }
-
         img {
             display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            height: auto;
+            margin: 30px auto 20px auto;
+            max-width: 98vw;
+            width: 100%;
+            max-height: 340px;
+            object-fit: contain;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #00000040;
         }
-
         .external-links {
             text-align: center;
-            margin: 40px 0;
+            margin: 40px 0 20px 0;
         }
-
         .external-links a {
-            margin: 0 40px;
-            color: #FFD700; /* Golden color for external links */
+            margin: 0 30px;
+            color: #FFD700;
+            font-size: 1.15em;
+            text-decoration: none;
+            border-bottom: 2px dashed #ffd70080;
+            transition: color 0.2s, border 0.2s;
         }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 1.1em;
-            color: #B0E0E6;
+        .external-links a:hover {
+            color: #fffde4;
+            border-bottom: 2px solid #FFD700;
+        }
+        .feedback-form {
+            background: rgba(20, 30, 60, 0.7);
+            padding: 24px;
+            width: 400px;
+            border-radius: 12px;
+            margin: 32px auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .feedback-form textarea, .feedback-form select {
+            background-color: #ffeeee;
+            width: 100%;
+            min-height: 80px;
+            border: 1px solid #bdbdbd;
+            border-radius: 6px;
+            padding: 8px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 1em;
+        }
+        .feedback-form select {
+            min-height: unset;
+            margin-bottom: 10px;
+        }
+        .feedback-form button, .feedback-form input[type="reset"] {
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .feedback-form button[type="reset"] {
+            background-color: #c62828;
+        }
+        .feedback-form label, .feedback-form legend {
+            font-weight: 500;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            h1 { font-size: 1.6em; }
+            img { max-height: 220px; }
+            .feedback-form { width: 98vw; }
+        }
+        @media (max-width: 600px) {
+            .navbar { flex-direction: column; }
+            .navbar a { margin: 5px 0; }
+            .canvas-container { height: 60px; }
+            #starCanvas { height: 60px; }
+            img { max-height: 120px; }
+            .feedback-form { padding: 10px; }
         }
     </style>
-
 </head>
+<body>
 
-
-
-<!-- Canvas -->
+<!-- Animated Star Canvas -->
 <div class="canvas-container">
-    <canvas id="myCanvas" width="1275" height="100"></canvas>
-    <script>
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-        ctx.font = "71px Arial";
-        ctx.fillText("🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟", 10, 70);
-    </script>
+    <canvas id="starCanvas" width="1600" height="100"></canvas>
 </div>
 
 <!-- Navigation bar -->
@@ -114,54 +190,33 @@
     <a href="Characters.html">( Look At The Characters )</a>
     <a href="index.html">( Introduction )</a>
     <a href="CultivationLevels.html">( Cultivation Levels )</a>
-    <a href="Review.html">( Review )</a>
+    <a href="Review.html" class="active">( Review )</a>
 </nav>
 
+<h1 class="fade-in">Swallowed Star Review & Feedback</h1>
 
+<p class="fade-in">
+    <b>Swallowed Star</b> is a thrilling journey through a post-apocalyptic world where humanity battles for survival against mutated monsters and explores the mysteries of the universe. The series stands out for its imaginative world-building, intense action, and deep philosophical undertones. Whether you're a fan of science fiction, martial arts, or epic adventures, Swallowed Star offers a unique blend of all three.
+</p>
 
+<ol class="fade-in">
+    <li>Stunning animation and visual effects</li>
+    <li>Complex and evolving characters</li>
+    <li>Engaging plot with unexpected twists</li>
+    <li>Rich lore and universe</li>
+    <li>Thought-provoking themes about survival and evolution</li>
+</ol>
 
-<body>
+<div class="external-links fade-in">
+    <a href="https://www.youtube.com/watch?v=wdqYt-98YtA&list=PLAV8AqZgfhJv5JMxEzh_bpou2_Ogzaaac" target="_blank" rel="noopener">
+        ( Watch Swallowed Star on YouTube )
+    </a>
+</div>
 
-<!--Your HTML tags will start here-->
+<img src="SwallowedStarClickBait.jpg" alt="Image of Thor and Hong" class="fade-in" loading="lazy">
 
 <!-- User Feedback Form -->
-<style>
-  .feedback-form {
-    background-color: #000000;
-    padding: 24px;
-    width: 400px;
-    border-radius: 12px;
-    margin: 32px auto;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-  .feedback-form textarea {
-    background-color: #ffeeee;
-    width: 100%;
-    min-height: 80px;
-    border: 1px solid #bdbdbd;
-    border-radius: 6px;
-    padding: 8px;
-    resize: vertical;
-  }
-  .feedback-form button, .feedback-form input[type="reset"] {
-    background-color: #0288d1;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 18px;
-    margin-right: 10px;
-    cursor: pointer;
-    font-size: 1em;
-  }
-  .feedback-form button[type="reset"] {
-    background-color: #c62828;
-  }
-  .feedback-form label, .feedback-form legend {
-    font-weight: 500;
-  }
-</style>
-
-<form class="feedback-form">
+<form class="feedback-form fade-in">
   <label for="topic">What would you like to give feedback on?</label><br>
   <select id="topic" name="topic" required>
     <option value="">--Please choose an option--</option>
@@ -195,17 +250,86 @@
   <button type="reset">Reset</button>
 </form>
 
-<h1><center> Watch Here </center></h1>
+<footer>
+    <h3>You may contact me at: <a href="mailto:mckelloj0829@student.faytechcc.edu">( mckelloj0829@student.faytechcc.edu )</a></h3>
+</footer>
 
-<a href="https://www.youtube.com/watch?v=wdqYt-98YtA&list=PLAV8AqZgfhJv5JMxEzh_bpou2_Ogzaaac">
-  <img src="SwallowedStarClickBait.jpg" alt="Image of Thor and Hong" />
-</a>
+<script>
+    // Animated Star Canvas
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    const STAR_COUNT = Math.floor(canvas.width / 18);
 
+    function randomStar() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.7 + 0.7,
+            speed: Math.random() * 0.7 + 0.2,
+            alpha: Math.random() * 0.5 + 0.5
+        };
+    }
+    function createStars() {
+        stars = [];
+        for (let i = 0; i < STAR_COUNT; i++) {
+            stars.push(randomStar());
+        }
+    }
+    function drawStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let star of stars) {
+            ctx.save();
+            ctx.globalAlpha = star.alpha;
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
+            ctx.fillStyle = '#FFD700';
+            ctx.shadowColor = '#FFD700';
+            ctx.shadowBlur = 8;
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+    function animateStars() {
+        for (let star of stars) {
+            star.x += star.speed;
+            if (star.x > canvas.width + 2) {
+                star.x = -2;
+                star.y = Math.random() * canvas.height;
+            }
+        }
+        drawStars();
+        requestAnimationFrame(animateStars);
+    }
+    createStars();
+    drawStars();
+    animateStars();
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth > 600 ? 1600 : window.innerWidth;
+        createStars();
+        drawStars();
+    });
 
+    // Fade-in animation on scroll
+    function revealOnScroll() {
+        const elements = document.querySelectorAll('.fade-in');
+        const windowHeight = window.innerHeight;
+        for (let el of elements) {
+            const top = el.getBoundingClientRect().top;
+            if (top < windowHeight - 80) {
+                el.classList.add('visible');
+            }
+        }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
 
-
-<!--Your HTML tags will end here-->
-
+    // Highlight active nav link
+    document.querySelectorAll('.navbar a').forEach(link => {
+        if (window.location.pathname.endsWith(link.getAttribute('href'))) {
+            link.classList.add('active');
+        }
+    });
+</script>
 </body>
-
 </html>
