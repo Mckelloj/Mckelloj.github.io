@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ArcHub - Games & Movies</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+			background: linear-gradient(135deg, #181824 0%, #23243a 100%);
+			color: #e0e7ff;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+		.container {
+			background: rgba(30, 32, 50, 0.95);
+			padding: 40px 30px;
+			border-radius: 16px;
+			box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+			text-align: center;
+			border: 1.5px solid #2e2e4d;
+			position: relative;
+			z-index: 1;
+		}
+		h1 {
+			margin-bottom: 28px;
+			font-size: 2.2em;
+			letter-spacing: 2px;
+			color: #7fdbff;
+			text-shadow: 0 0 8px #0ff, 0 0 2px #222;
+		}
+		.hub-links {
+			display: flex;
+			gap: 48px;
+			justify-content: center;
+		}
+		.hub-link {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 28px 22px;
+			background: linear-gradient(135deg, #23243a 60%, #1a1b2e 100%);
+			border-radius: 10px;
+			text-decoration: none;
+			color: #e0e7ff;
+			font-size: 1.25em;
+			box-shadow: 0 2px 16px rgba(0,255,255,0.08);
+			border: 2px solid #0ff;
+			transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+			position: relative;
+		}
+		.hub-link:hover {
+			box-shadow: 0 0 24px #0ff, 0 2px 24px #7fdbff;
+			border-color: #7fdbff;
+			background: linear-gradient(135deg, #23243a 40%, #0ff 100%);
+			color: #181824;
+		}
+		.icon {
+			font-size: 2.8em;
+			margin-bottom: 12px;
+			text-shadow: 0 0 12px #0ff, 0 0 2px #222;
+		}
+		.coming-soon {
+			color: #7fdbff;
+			font-size: 1em;
+			margin-top: 10px;
+			text-shadow: 0 0 6px #0ff;
+		}
+		.circuit-bg {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: 0;
+			pointer-events: none;
+		}
+		.pulse {
+			stroke: #00ffff;
+			filter: drop-shadow(0 0 12px #00ffff);
+			animation: pulseGlow 2s infinite;
+		}
+		@keyframes pulseGlow {
+			0%, 100% {
+				opacity: 0.5;
+				filter: drop-shadow(0 0 12px #00ffff);
+			}
+			50% {
+				opacity: 1;
+				filter: drop-shadow(0 0 32px #00ffff);
+			}
+		}
+	</style>
+</head>
+<body>
+    <!-- Circuit SVG Background -->
+    <svg class="circuit-bg" width="100vw" height="100vh" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#00ffff" stroke-width="3" stroke-linecap="round" opacity="0.5">
+            <path class="pulse" d="M100 200 H400 V600 H800" />
+            <path class="pulse" d="M300 100 V400 H900" />
+            <circle class="pulse" cx="400" cy="600" r="18" />
+            <circle class="pulse" cx="800" cy="600" r="12" />
+            <circle class="pulse" cx="900" cy="400" r="16" />
+            <circle class="pulse" cx="300" cy="100" r="10" />
+            <circle class="pulse" cx="100" cy="200" r="14" />
+        </g>
+    </svg>
+    <div class="container">
+		<h1>Welcome to AcrHub</h1>
+		<div class="hub-links">
+			<a class="hub-link" href="OnlineGames\Arcadia\ArcLab.html">
+				<span class="icon">🎮</span>
+				<span>Games</span>
+			</a>
+			<a class="hub-link" href="FreeMovies\ArcPlay.html">
+				<span class="icon">🎬</span>
+				<span>Movies</span>
+			</a>
+		</div>
+	</div>
+</body>
+</html>
